@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background-image: linear-gradient(to right, rgb(0, 170, 255) 5%, rgba(0, 177, 255, 0) 60%), url(./images/location/south-beach-usa.png);
+    background-image: linear-gradient(to right, rgb(71, 101, 114) 5%, rgba(78, 95, 103, .25) 95%), url(./images/location/south-beach-usa.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,7 +21,8 @@ body {
     background-color: rgb(49, 73, 117);
     width: 100vw;
     background-attachment: fixed;
-    margin-bottom: 100px;
+    position: fixed;
+    top: 0;
 }
 
 h3, a {
@@ -65,9 +66,8 @@ button:active {
     padding-right: 30px;
 }
 
-#overview {
-    color: white;
-    width: 40vw;
+#overview, #contact-us {
+    display: flex;
 }
 
 h1 {
@@ -80,4 +80,78 @@ h1 {
 p {
     text-align: justify;
     font-size: 1.25rem;
+}
+
+#overview, #about-us, #contact-us {
+    color: white;
+    margin-top: 15%;
+    padding: 0 30px 10px 30px;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+
+}
+
+#travellr-trio {
+    display: flex;
+    margin-top: 5%;
+    justify-content: center;
+    gap: 35px;
+}
+
+#person-1, #person-2, #person-3 {
+    display: flex;
+    align-items: center;
+    padding-top: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-direction: column;
+    background: rgba(119, 136, 153, 0.75);
+    border-radius: 10px;
+}
+
+#travel-recommender, #contact-tip {
+    width: 40vw;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    max-width: 100%;
+    background: rgba(85, 101, 115, 0.75);
+    padding-bottom: 30px;
+    padding-left: 15px;
+    margin-left: 45px;
+    border-radius: 10px;
+}
+
+#contact-form p, #contact-form input, #contact-form textarea, #submit-form {
+    margin-left: 10%;
+    margin-right: 5%;
+}
+
+#contact-form input {
+    background-color: rgb(72, 72, 72);
+    width: 50%;
+}
+
+#contact-form textarea {
+    background-color: rgb(72, 72, 72);
+    color: whitesmoke;
+    font-size: .75rem;
+    border-style: none;
+    resize: none;
+    width: 75%;
+}
+
+#contact-form #submit-form {
+    background-color: rgb(72, 72, 72);
+    color: whitesmoke;
+    margin-top: 5%;
+    font-size: 1.1rem;
+    padding-left: 30px;
+    padding-right: 30px;
 }
