@@ -51,6 +51,11 @@ input, button {
     color: white;
     font-size: 1rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 1vh;
+}
+
+input {
+    width: 35vw;
 }
 
 input::placeholder {
@@ -116,10 +121,24 @@ h2 {
     width: 40vw;
 }
 
-#contact-form {
+#no-results h1 {
+    justify-content: center;
+    align-items: center;
+}
+
+#recommendations, #contact-form, #no-results {
     display: flex;
-    flex-direction: column;
     width: 60vw;
+}
+
+#recommendations {
+    position: fixed;
+    padding-bottom: 30px;
+    margin-left: 45px;
+}
+
+#contact-form {
+    flex-direction: column;
     max-width: 100%;
     background: rgba(85, 101, 115, 0.75);
     padding-bottom: 30px;

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TravellR - Home</title>
         <link rel="stylesheet" href="./styles.css">
-        <script href="./travel_recommendation.js"></script>
+        <script src="./travel_recommendation.js"></script>
     </head>
     <body>
         <div id="navigation">
@@ -17,9 +17,9 @@
                 <a href="./contact-us.html">Contact us</a>
             </nav>
             <div id="search-result">
-                <input class="search-value" type="text" name="location" placeholder="Search" required />
-                <button type="submit">Search</button>
-                <button type="submit">Clear</button>
+                <input class="search-value" type="text" name="location" placeholder="Search by keyword (E.g., 'beaches', 'temples', or 'countries')" required/>
+                <button type="submit" onclick="getValidSearch()">Search</button>
+                <button type="submit" onclick="removeRecommendations()">Clear</button>
             </div>
         </div>
         <div id="overview">
