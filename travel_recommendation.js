@@ -71,6 +71,10 @@ function removeRecommendations() {
   if (document.getElementById("no-results")) {
     document.getElementById("no-results").remove();
   }
+
+  if (document.querySelector(".search-value").value) {
+    document.querySelector(".search-value").value = "";
+  }
 }
 
 async function getRecommendations() {
@@ -94,7 +98,8 @@ async function getRecommendations() {
 
     recommendationsDiv.setAttribute("id", "recommendations");
 
-    for (const data of validResults) {
+    for (let i = 0; i < 2; i++) {
+      const data = validResults[i];
       let recommendationDiv = document.createElement("div");
       let newImgElement = document.createElement("img");
 
