@@ -71,10 +71,6 @@ function removeRecommendations() {
   if (document.getElementById("no-results")) {
     document.getElementById("no-results").remove();
   }
-
-  if (document.querySelector(".search-value").value) {
-    document.querySelector(".search-value").value = "";
-  }
 }
 
 async function getRecommendations() {
