@@ -9,8 +9,6 @@ async function getJSONData(file) {
 
   const data = await response.json();
 
-  console.log(data); //
-
   return data;
 }
 
@@ -26,9 +24,7 @@ async function getValidSearch() {
   if (!userInput) {
     window.alert("Please enter a keyword");
     return;
-  } else {
-    console.log(userInputLowerCase);
-  } //
+  }
 
   if (
     jsonDataKeysArray.includes(userInputLowerCase) ||
@@ -63,8 +59,6 @@ async function getValidSearch() {
       }
     }
   }
-
-  console.log(filteredData); //
 
   return filteredData;
 }
