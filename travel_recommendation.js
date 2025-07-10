@@ -15,41 +15,51 @@ async function getJSONData(file) {
 }
 
 async function getValidSearch() {
-  const userInput = document.querySelector(".search-value").value.trim();
+  let userInput = document.querySelector(".search-value").value.trim();
+  let userInputLowerCase = userInput.toLowerCase();
   const jsonData = await getJSONData(jsonFile);
   const jsonDataKeysArray = Object.keys(jsonData);
-  const jsonDataKey = jsonDataKeysArray[0];
+  const jsonDataKey1 = jsonDataKeysArray[0];
   let filteredData = [];
+  const singularKeyArray = ["country", "temple", "beach"];
 
   if (!userInput) {
     window.alert("Please enter a keyword");
     return;
   } else {
-    console.log(userInput);
+    console.log(userInputLowerCase);
   } //
 
   if (
-    userInput.toLowerCase() === "country" ||
-    jsonDataKey.includes(userInput.toLowerCase())
+    jsonDataKeysArray.includes(userInputLowerCase) ||
+    singularKeyArray.includes(userInputLowerCase)
   ) {
-    const dataObject = jsonData["countries"];
+    if (
+      userInputLowerCase === "country" ||
+      jsonDataKey1.includes(userInputLowerCase)
+    ) {
+      const dataObject = jsonData["countries"];
 
-    for (data of dataObject) {
-      filteredData = filteredData.concat(data["cities"]);
-    }
-  } else {
-    for (let i = 1; i < jsonDataKeysArray.length; i++) {
-      if (jsonDataKeysArray[i].includes(userInput.toLowerCase())) {
-        const dataObject = jsonData[jsonDataKeysArray[i]];
+      for (const data of dataObject) {
+        filteredData = filteredData.concat(data["cities"]);
+      }
+    } else {
+      for (let i = 1; i < jsonDataKeysArray.length; i++) {
+        if (
+          jsonDataKeysArray[i] === userInputLowerCase ||
+          jsonDataKeysArray[i].includes(userInputLowerCase)
+        ) {
+          const dataObject = jsonData[jsonDataKeysArray[i]];
 
-        for (data of dataObject) {
-          let dataCopy = {
-            ...data,
-          };
-          filteredData = filteredData.concat(dataCopy);
+          for (const data of dataObject) {
+            let dataCopy = {
+              ...data,
+            };
+            filteredData = filteredData.concat(dataCopy);
+          }
+
+          break;
         }
-
-        break;
       }
     }
   }
@@ -60,35 +70,60 @@ async function getValidSearch() {
 }
 
 function removeRecommendations() {
-    if (document.getElementById("recommendations")) {
-        document.getElementById("recommendations").remove();
-    }
+  if (document.getElementById("recommendations")) {
+    document.getElementById("recommendations").remove();
+  }
 
-    if (document.getElementById("no-results")) {
-        document.getElementById("no-results").remove();
-    }
+  if (document.getElementById("no-results")) {
+    document.getElementById("no-results").remove();
+  }
 }
 
 async function getRecommendations() {
-    const validResults = await getValidSearch();
-    const length = validResults.length;
-    let overviewDiv = document.getElementById("overview");
-        
+  const validResults = await getValidSearch();
 
-    removeRecommendations();
+  removeRecommendations();
 
-    if (!validResults || length === 0) {
-        let noResultsDiv = document.createElement("div");
-        let heading1Element = document.createElement("h1");
-        heading1Element.innerHTML = "No results";
+  if (validResults === undefined || validResults.length === 0) {
+    let noResultsDiv = document.createElement("div");
+    let heading1Element = document.createElement("h1");
+    heading1Element.textContent =
+      "No results for the keyword '" +
+      document.querySelector(".search-value").value.trim() +
+      "'";
 
-        noResultsDiv.setAttribute("id", "no-results");
-        noResultsDiv.appendChild(heading1Element);
-        overviewDiv.appendChild(noResultsDiv);
-        document.body.appendChild(overviewDiv);
-    } else {
-        let recommendationsDiv = document.createElement("div");
-        
-        recommendationsDiv.setAttribute("id", "recommendations");
+    noResultsDiv.setAttribute("id", "no-results");
+    noResultsDiv.appendChild(heading1Element);
+    document.getElementById("overview").appendChild(noResultsDiv);
+  } else {
+    let recommendationsDiv = document.createElement("div");
+
+    recommendationsDiv.setAttribute("id", "recommendations");
+
+    for (const data of validResults) {
+      let recommendationDiv = document.createElement("div");
+      let newImgElement = document.createElement("img");
+
+      recommendationDiv.setAttribute("class", "recommendation");
+
+      newImgElement.setAttribute("src", data.imageUrl);
+      newImgElement.setAttribute("width", "300px");
+      newImgElement.setAttribute("height", "200px");
+
+      recommendationDiv.appendChild(newImgElement);
+
+      let heading4Element = document.createElement("h4");
+      heading4Element.innerHTML = data.name;
+
+      recommendationDiv.appendChild(heading4Element);
+
+      let paragraphElement = document.createElement("p");
+      paragraphElement.innerHTML = data.description;
+
+      recommendationDiv.appendChild(paragraphElement);
+      recommendationsDiv.appendChild(recommendationDiv);
     }
+
+    document.getElementById("overview").appendChild(recommendationsDiv);
+  }
 }

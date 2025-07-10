@@ -59,7 +59,7 @@
       {
         "id": 2,
         "name": "Taj Mahal, India",
-        "imageUrl": "./images/location/taj-mahal-india.jpg",
+        "imageUrl": "./images/location/taj-mahal-india.png",
         "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
       }
     ],
@@ -67,13 +67,13 @@
       {
         "id": 1,
         "name": "Bora Bora, French Polynesia",
-        "imageUrl": "./images/location/bora-bora-french-polynesia.jpg",
+        "imageUrl": "./images/location/bora-bora-french-polynesia.png",
         "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
       },
       {
         "id": 2,
         "name": "Copacabana Beach, Brazil",
-        "imageUrl": "./images/location/copacabana-beach-brazil.jpg",
+        "imageUrl": "./images/location/copacabana-beach-brazil.png",
         "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views."
       }
     ]

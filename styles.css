@@ -89,8 +89,12 @@ p {
 
 #overview, #about-us, #contact-us {
     color: white;
-    margin-top: 15%;
-    padding: 0 30px 10px 30px;
+    margin-top: 10%;
+    padding: 20px;
+}
+
+#overfview {
+    overflow: hidden;
 }
 
 h2 {
@@ -121,20 +125,59 @@ h2 {
     width: 40vw;
 }
 
-#no-results h1 {
+#no-results {
     justify-content: center;
     align-items: center;
 }
 
-#recommendations, #contact-form, #no-results {
-    display: flex;
+#no-results h1 {
+    color: gainsboro;
+    text-decoration: none;
+    text-transform: none;
+    background-color: rgba(119, 136, 153, 0.75);
+    border-radius: 5px;
+}
+
+#contact-form, #no-results {
+    display: inline-flex;
     width: 60vw;
 }
 
 #recommendations {
-    position: fixed;
-    padding-bottom: 30px;
-    margin-left: 45px;
+    display: flex;
+    height: 50vh;
+    flex-direction: column;
+    margin: 20px 35px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    gap: 30px;
+    padding: 20px;
+    scrollbar-width: none;
+    align-items: center;
+    width: 60%;
+    box-sizing:content-box;
+    background: rgba(119, 136, 153, 0.75);
+    border-radius: 20px;
+}
+
+.recommendation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 10px;
+    padding-top: 20px;
+    margin: 0 auto;
+    border-bottom: outset thick white;
+}
+
+.recommendation h4, .recommendation p {
+    text-align: center;
+}
+
+h4:hover {
+    text-decoration: double;
+    font-size: 1rem;
 }
 
 #contact-form {
